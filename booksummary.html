@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Summary - Paradise Resort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Paradise Resort</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn login">Login</a></li>
+                <li><a href="signup.html" class="btn signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Confirmation Section -->
+    <section class="confirmation">
+        <div class="confirmation-container">
+            <h2>Booking Confirmation</h2>
+            <p>Your rooms have been successfully booked! Below are your booking details:</p>
+
+            <div id="bookingDetails">
+                <!-- Booking details will be displayed here dynamically -->
+            </div>
+
+            <a href="index.html" class="btn">Back to Home</a>
+        </div>
+    </section>
+
+    
+
+    <script>
+        // Fetch booking details from localStorage
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        // Display booking details on the page
+        const bookingDetailsContainer = document.getElementById('bookingDetails');
+
+        if (bookingDetails) {
+            bookingDetailsContainer.innerHTML = `
+                <p><strong>Full Name:</strong> ${bookingDetails.name}</p>
+                <p><strong>Email:</strong> ${bookingDetails.email}</p>
+                <p><strong>Room Type:</strong> ${bookingDetails.roomType}</p>
+                <p><strong>Check-in Date:</strong> ${bookingDetails.checkIn}</p>
+                <p><strong>Check-out Date:</strong> ${bookingDetails.checkOut}</p>
+                <p><strong>Number of Guests:</strong> ${bookingDetails.guests}</p>
+                <p><strong>Special Requests:</strong> ${bookingDetails.requests || "None"}</p>
+            `;
+        } else {
+            bookingDetailsContainer.innerHTML = `<p>No booking details available.</p>`;
+        }
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Paradise Resort. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    
+</body>
+</html>

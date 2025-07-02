@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Resort Booking System</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Create Account</h2>
+            <p class="welcome-text">Join our resort booking system today</p>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    <div class="field-error" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    <div class="field-error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password">
+                    <div class="field-error" id="passwordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                    <div class="field-error" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Already have an account? <a href="/login">Login</a></p>
+                <p class="contact-link"><a href="/contact">Contact Us</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import validation from '/js/validation.js';
+
+        // Get form elements
+        const form = document.getElementById('signupForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Real-time name validation
+        nameInput.addEventListener('input', (e) => {
+            const name = e.target.value;
+            const nameError = document.getElementById('nameError');
+            
+            if (!validation.isValidName(name)) {
+                validation.showError(nameError, 'Please enter a valid name (letters and spaces only)');
+            } else {
+                validation.hideError(nameError);
+            }
+        });
+
+        // Real-time email validation
+        emailInput.addEventListener('input', (e) => {
+            const email = e.target.value;
+            const emailError = document.getElementById('emailError');
+            
+            if (!validation.isValidEmail(email)) {
+                validation.showError(emailError, 'Please enter a valid email address');
+            } else {
+                validation.hideError(emailError);
+            }
+        });
+
+        // Real-time password match validation
+        confirmPasswordInput.addEventListener('input', (e) => {
+            const confirmPassword = e.target.value;
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            
+            if (confirmPassword !== passwordInput.value) {
+                validation.showError(confirmPasswordError, 'Passwords do not match');
+            } else {
+                validation.hideError(confirmPasswordError);
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: nameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value,
+                confirmPassword: confirmPasswordInput.value
+            };
+
+            // Validate form
+            const errors = validation.validateSignupForm(formData);
+            
+            if (errors.length > 0) {
+                errorMessage.textContent = errors.join('\n');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        password: formData.password
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    window.location.href = '/login';
+                } else {
+                    errorMessage.textContent = data.message || 'Registration failed';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'An error occurred. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html> 
