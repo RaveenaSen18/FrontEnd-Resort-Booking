@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Resort Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="confirmation-page">
+            <div class="confirmation-header">
+                <h2>Booking Confirmation</h2>
+                <div class="success-icon">✓</div>
+            </div>
+            <div class="confirmation-details">
+                <h3>Thank you for your booking!</h3>
+                <p>Your reservation has been confirmed. Here are your booking details:</p>
+                
+                <div class="booking-info">
+                    <div class="info-group">
+                        <label>Booking ID:</label>
+                        <span id="bookingId"></span>
+                    </div>
+                    <div class="info-group">
+                        <label>Room Type:</label>
+                        <span id="roomType"></span>
+                    </div>
+                    <div class="info-group">
+                        <label>Check-in Date:</label>
+                        <span id="checkIn"></span>
+                    </div>
+                    <div class="info-group">
+                        <label>Check-out Date:</label>
+                        <span id="checkOut"></span>
+                    </div>
+                    <div class="info-group">
+                        <label>Number of Guests:</label>
+                        <span id="guests"></span>
+                    </div>
+                    <div class="info-group">
+                        <label>Total Price:</label>
+                        <span id="totalPrice"></span>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button onclick="window.location.href='index.html'" class="btn-primary">Return to Home</button>
+                    <button onclick="window.print()" class="btn-secondary">Print Confirmation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { session } from './js/api.js';
+
+        // Check if user is authenticated
+        if (!session.isAuthenticated()) {
+            window.location.href = 'login.html';
+        }
+
+        // Get booking details from session storage
+        const bookingDetails = JSON.parse(sessionStorage.getItem('lastBooking'));
+        if (!bookingDetails) {
+            window.location.href = 'index.html';
+        }
+
+        // Display booking details
+        document.getElementById('bookingId').textContent = bookingDetails._id;
+        document.getElementById('roomType').textContent = bookingDetails.roomType;
+        document.getElementById('checkIn').textContent = new Date(bookingDetails.checkIn).toLocaleDateString();
+        document.getElementById('checkOut').textContent = new Date(bookingDetails.checkOut).toLocaleDateString();
+        document.getElementById('guests').textContent = `${bookingDetails.guests.adults} Adults, ${bookingDetails.guests.children} Children`;
+        document.getElementById('totalPrice').textContent = `$${bookingDetails.totalPrice.toFixed(2)}`;
+
+        // Clear the booking details from session storage
+        sessionStorage.removeItem('lastBooking');
+    </script>
+</body>
+</html>

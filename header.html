@@ -1,0 +1,30 @@
+<header class="main-header">
+    <div class="top-bar">
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +1 (555) 123-4567</span>
+            <span><i class="fas fa-envelope"></i> info@resortbooking.com</span>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <nav class="nav-container">
+        <div class="logo">
+            <i class="fas fa-hotel"></i>
+            <span>Resort Booking</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
+            <a href="/rooms" class="{% if active_page == 'rooms' %}active{% endif %}">Rooms</a>
+            <a href="/amenities" class="{% if active_page == 'amenities' %}active{% endif %}">Amenities</a>
+            <a href="/about" class="{% if active_page == 'about' %}active{% endif %}">About</a>
+            <a href="/contact" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
+            <div class="auth-buttons">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+</header> 

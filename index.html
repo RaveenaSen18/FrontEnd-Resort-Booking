@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resort Booking System</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-container">
+        <header class="main-header">
+            <div class="top-bar">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +1 (555) 123-4567</span>
+                    <span><i class="fas fa-envelope"></i> info@resortbooking.com</span>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <nav class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-hotel"></i>
+                    <span>Resort Booking</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="active">Home</a>
+                    <a href="/rooms">Rooms</a>
+                    <a href="/amenities">Amenities</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <div class="auth-buttons">
+                        <a href="/login" class="btn-login">Login</a>
+                        <a href="/signup" class="btn-signup">Sign Up</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <h1>Welcome to Luxury Resort Booking</h1>
+                <p>Experience the perfect blend of comfort and luxury</p>
+                <a href="/rooms" class="btn-primary">Book Now</a>
+            </section>
+
+            <section class="features-section">
+                <h2>Why Choose Us</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏖️</div>
+                        <h3>Beachfront Location</h3>
+                        <p>Direct access to pristine beaches</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏊‍♂️</div>
+                        <h3>Swimming Pool</h3>
+                        <p>Infinity pool with ocean view</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h3>Fine Dining</h3>
+                        <p>Multiple restaurants and bars</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💆‍♂️</div>
+                        <h3>Spa & Wellness</h3>
+                        <p>Luxury spa treatments</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rooms-preview">
+                <h2>Our Rooms</h2>
+                <div class="rooms-grid">
+                    <div class="room-card">
+                        <img src="/images/room1.jpg" alt="Deluxe Room">
+                        <h3>Deluxe Room</h3>
+                        <p>Starting from $200/night</p>
+                        <a href="/rooms" class="btn-secondary">View Details</a>
+                    </div>
+                    <div class="room-card">
+                        <img src="/images/room2.jpg" alt="Suite">
+                        <h3>Suite</h3>
+                        <p>Starting from $350/night</p>
+                        <a href="/rooms" class="btn-secondary">View Details</a>
+                    </div>
+                    <div class="room-card">
+                        <img src="/images/room3.jpg" alt="Villa">
+                        <h3>Villa</h3>
+                        <p>Starting from $500/night</p>
+                        <a href="/rooms" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <h2>Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>123 Beach Road, Paradise Island</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@paradiseresort.com</p>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@resortbooking.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Beach Road, Paradise Island</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/rooms">Rooms</a></li>
+                        <li><a href="/amenities">Amenities</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Resort Booking System. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
